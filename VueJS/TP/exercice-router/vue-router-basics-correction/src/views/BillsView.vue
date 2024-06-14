@@ -1,4 +1,3 @@
-<!-- vue principale pour les factures -->
 <template>
   <div>
     <!-- titre et bouton ajouter -->
@@ -8,14 +7,22 @@
       </div>
       <div class="col text-end">
         <button class="btn btn-outline-primary">
-          <i class="fa-solid fa-plus me-2" />Ajouter une facture
+          <i class="fa-solid fa-plus-circle me-2" />
+          Ajouter une facture
         </button>
       </div>
     </div>
 
-    <!-- appel du composant header du tableau d'affichage des factures -->
     <TableList>
-      <!-- pour personnaliser les th du tableau TableList : --><!-- <template #thead><th>test</th></template> -->
+      <!-- exemple pour personnaliser les th du tableau TableList : -->
+      <!-- <template #thead>
+        <th>test</th>
+        <th>test</th>
+        <th>test</th>
+        <th>test</th>
+        <th>test</th>
+        <th>test</th>
+      </template> -->
       <BillTableRow
         v-for="bill in bills"
         :key="bill.id"
@@ -24,7 +31,12 @@
         @delete="onDeleteBill($event)"
       />
     </TableList>
+    <pre>
+      {{ bills }}
+    </pre>
+
     <!-- on peut passer des paramètres dans les router-links : -->
+
     <!-- <RouterLink :to="`/edit-bill/${bills[0].id}`">Lien test vers la bill avec l'id 1</RouterLink>
     <RouterLink to="/edit-bill/3">Lien test vers la bill avec l'id 1</RouterLink>
     <RouterLink
@@ -34,20 +46,19 @@
           id: 2
         }
       }"
-      >Lien test vers la bill avec l'id 1</RouterLink> -->
+      >Lien test vers la bill avec l'id 1</RouterLink
+    > -->
   </div>
 </template>
 
 <script>
-// import { RouterLink } from 'vue-router'
-import TableList from '@/components/TableList/TableList.vue'
 import BillTableRow from '@/components/TableList/BillTableRow.vue'
+import TableList from '@/components/TableList/TableList.vue'
 import { bills } from '@/seeds/bills.js'
 export default {
   components: {
     TableList,
     BillTableRow
-    //RouterLink
   },
   data() {
     return {
@@ -67,9 +78,7 @@ export default {
       // autre syntaxe en utilisant le path (dynamique)
       // this.$router.push({ path: `/edit-bill/${bill.id}`  })
     },
-    // méthode pour supprimer une facture
     onDeleteBill(bill) {
-      console.log('delete bill with id: ', bill.id)
       // on recherche l'index de la facture à supprimer, et on retourne un nouveau tableau de bills sans celle-ci
       this.bills = this.bills.filter((b) => b.id !== bill.id)
     }

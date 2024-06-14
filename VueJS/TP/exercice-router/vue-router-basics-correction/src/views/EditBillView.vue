@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div>
     <div class="row border-bottom pb-3 mb-3 pt-4 mt-4">
       <div class="col">
@@ -51,7 +51,7 @@
 
 <script>
 import { bills } from '@/seeds/bills.js'
-// import moment from 'moment'
+import moment from 'moment'
 
 export default {
   props: {
@@ -72,16 +72,16 @@ export default {
   computed: {
     clientName() {
       return this.bill.client ? `${this.bill.client.firstName} ${this.bill.client.lastName}` : ''
+    },
+    formattedDate: {
+      get() {
+        return this.bill.date ? moment(this.bill.date).format('YYYY-MM-DD') : ''
+      },
+      set(newValue) {
+        this.bill.date = newValue
+      }
     }
   },
-  // formattedDate: {
-  //   get() {
-  //     return this.bill.date ? moment(this.bill.date).format('YYYY-MM-DD') : ''
-  //   },
-  //   set(newValue) {
-  //     this.bill.date = newValue
-  //   }
-  // },
   methods: {
     loadBill() {
       this.bill = this.bills.find((bill) => bill.id == this.id)
@@ -110,4 +110,4 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped></style> -->
