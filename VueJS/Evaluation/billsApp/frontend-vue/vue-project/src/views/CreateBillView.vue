@@ -238,14 +238,16 @@
       </p>
     </div>
   </div>
-  <pre> {{ bill.id }}</pre>
+  <!-- test utilisation d'une action du store client fonctionne -->
+  <!-- <pre> {{ clients }}</pre> -->
 </template>
 
 <script>
 import { useBillStore } from '@/stores/bill.js'
-import { clients } from '@/seeds/clients.js'
+import { useClientStore } from '@/stores/clients.js'
+// import { clients } from '@/seeds/clients.js'
 import TableList from '@/components/TableList/TableList.vue'
-import { mapActions } from 'pinia'
+import { mapActions, mapState } from 'pinia'
 
 const prestationInterface = {
   description: '',
@@ -259,7 +261,6 @@ export default {
   },
   data() {
     return {
-      clients,
       bill: {
         id: -1,
         billnum: '',
@@ -283,6 +284,7 @@ export default {
     }
   },
   computed: {
+    ...mapState(useClientStore, ['clients']),
     formInvalid() {
       return (
         !this.bill ||
@@ -304,6 +306,7 @@ export default {
   },
   methods: {
     ...mapActions(useBillStore, ['onUpdateBill', 'onAddBill']),
+    ...mapActions(useClientStore, ['getAllClients']),
     onAddPrestation(index) {
       // ajout d'une prestation sous l'élément courant dans le tableau
       this.bill.prestations.splice(index, 0, { ...prestationInterface })
@@ -353,6 +356,9 @@ export default {
     'bill.paid'() {
       this.updateTotal()
     }
+  },
+  created() {
+    this.getAllClients() // Appel à l'action pour récupérer la liste des clients
   }
 }
 </script>

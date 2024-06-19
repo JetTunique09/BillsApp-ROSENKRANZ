@@ -284,11 +284,11 @@
 <script>
 // import PrestationTableRow from '@/components/TableList/PrestationTableRow.vue'
 import TableList from '@/components/TableList/TableList.vue'
-import { clients } from '@/seeds/clients.js'
+import { useClientStore } from '@/stores/clients.js'
 // on importe le store
 import { useBillStore } from '@/stores/bill.js'
 // on importe les actions de pinia
-import { mapActions, mapWritableState } from 'pinia'
+import { mapActions, mapWritableState, mapState } from 'pinia'
 
 const prestationInterface = {
   description: '',
@@ -308,11 +308,10 @@ export default {
     }
   },
   data() {
-    return {
-      clients
-    }
+    return {}
   },
   computed: {
+    ...mapState(useClientStore, ['clients']),
     ...mapWritableState(useBillStore, ['bill']),
     formInvalid() {
       return (
@@ -339,7 +338,7 @@ export default {
   methods: {
     // on déclare l'action ou les actions du store que l'on souhaite utiliser
     ...mapActions(useBillStore, ['onDeleteBill', 'onUpdateBill', 'setBill']),
-
+    ...mapActions(useClientStore, ['getAllClients']),
     onAddPrestation(index) {
       // ajout d'une prestation sous l'élément courant dans le tableau
       this.bill.prestations.splice(index, 0, { ...prestationInterface })
@@ -394,6 +393,9 @@ export default {
     'bill.paid'() {
       this.updateTotal()
     }
+  },
+  created() {
+    this.getAllClients() // Appel à l'action pour récupérer la liste des clients
   }
 }
 </script>
