@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- titre et bouton ajouter -->
-    <div class="row border-bottom pb-3 mb-3">
+    <div class="row border-bottom pb-3 mb-3 mt-4">
       <div class="col">
         <h1 class="h3" @click="toggleBillsList">
           <i :class="showBills ? 'fa-solid fa-angle-down' : 'fa-solid fa-angle-up'" class="me-2"></i
@@ -9,10 +9,10 @@
         </h1>
       </div>
       <div class="col text-end">
-        <button class="btn btn-outline-primary" @click="addBill">
+        <router-link to="/create-bill" class="btn btn-outline-primary">
           <i class="fa-solid fa-plus-circle me-2"></i>
           Ajouter une facture
-        </button>
+        </router-link>
       </div>
     </div>
 
@@ -35,11 +35,9 @@
           @delete="onDeleteBill($event)"
         />
       </TableList>
-      <pre>
-        {{ bills }}
-      </pre>
     </div>
   </div>
+  <!-- <pre> {{ bills }}</pre> -->
 </template>
 
 <script>
@@ -66,14 +64,15 @@ export default {
     //...mapStores(useBillStore)
   },
   async mounted() {
+    //récupère les données de l'API
     await this.getAllBills()
   },
   methods: {
-    ...mapActions(useBillStore, ['onDeleteBill']),
+    ...mapActions(useBillStore, ['onDeleteBill', 'getAllBills']),
     onEditBill(bill) {
       console.log('edit bill with id: ', bill.id)
       //this.setBill(bill.id); // Assurez-vous que la facture est définie dans le store
-      // je change de page programmatiquement avec le $router
+      //redirection de page
       this.$router.push({
         name: 'edit-bill',
         params: {
@@ -83,10 +82,6 @@ export default {
     },
     toggleBillsList() {
       this.showBills = !this.showBills
-    },
-    addBill() {
-      console.log('Add new bill')
-      this.$router.push({ path: '/create-bill' })
     }
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <div v-if="bill">
     <!-- titre et bouton ajouter -->
-    <div class="row border-bottom pb-3 mb-3">
+    <div class="row border-bottom pb-3 mb-3 mt-4">
       <div class="col">
         <h1 class="h3"><i class="fa-solid fa-angle-down me-2" />Editer une facture</h1>
       </div>
@@ -277,7 +277,7 @@
       </button>
     </p>
     <!-- 1ère manière de récupérer des paramètres de la route : -->
-    <pre>{{ bill }}</pre>
+    <!-- <pre>{{ bill }}</pre> -->
   </div>
 </template>
 

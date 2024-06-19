@@ -11,6 +11,6 @@ export default {
   install: (app) => {
     // configure the $axios global property
     app.config.globalProperties.$http = { ...axiosInstance }
-    // plus tard dans l'applications, on pourra utiliser this.$axios.get(...)
+    // plus tard dans l'applications, on pourra utiliser this.$http.get(...)
   }
 }

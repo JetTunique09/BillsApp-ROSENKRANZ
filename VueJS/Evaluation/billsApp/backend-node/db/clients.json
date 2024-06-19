@@ -1,0 +1,178 @@
+[
+  {
+    "idclient": 10,
+    "firstName": "Benjamin",
+    "lastName": "Anderson",
+    "companyName": "Foodies",
+    "addDate": 1718739429147,
+    "email": "b.anderson@foodies.com",
+    "phone": "0212345678",
+    "functions": "CMO",
+    "address": {
+      "street": "963 Culinary Ave",
+      "city": "Rome",
+      "zipCode": "90009",
+      "country": "Italy"
+    }
+  },
+  {
+    "idclient": "c13dfaa1-dabc-4c0f-a382-aa5b26cfe7e5",
+    "firstName": "Lucas",
+    "lastName": "Lucas",
+    "companyName": "Lucascompany",
+    "addDate": "2024-06-19",
+    "email": "Lucas@jsp.com",
+    "phone": "097545678",
+    "functions": "ooo",
+    "address": {
+      "street": "Lucas",
+      "city": "Lucacity",
+      "zipCode": "",
+      "country": ""
+    }
+  },
+  {
+    "idclient": "7cd36c09-b842-4635-8ad5-f8672b526bd3",
+    "firstName": "Mia",
+    "lastName": "Wilson",
+    "companyName": "GreenEnergy",
+    "addDate": 1718739429147,
+    "email": "m.wilson@greenenergy.com",
+    "phone": "0189012345",
+    "functions": "CSO",
+    "address": {
+      "street": "987 Eco Ln",
+      "city": "Berlin",
+      "zipCode": "60006",
+      "country": "Germany"
+    }
+  },
+  {
+    "idclient": "a4f3fd43-4526-47e5-8255-ccdaac2f7afd",
+    "firstName": "Jean",
+    "lastName": "Dupont",
+    "companyName": "TechSolutions",
+    "addDate": 1718739429148,
+    "email": "j.dupont@techsolutions.com",
+    "phone": "0145678910",
+    "functions": "CEO",
+    "address": {
+      "street": "123 Rue de la Paix",
+      "city": "Paris",
+      "zipCode": "75001",
+      "country": "France"
+    }
+  },
+  {
+    "idclient": "41210de5-2998-41fa-9701-c68907ef0516",
+    "firstName": "Anna",
+    "lastName": "Schmidt",
+    "companyName": "Innovatech",
+    "addDate": 1718739429149,
+    "email": "a.schmidt@innovatech.com",
+    "phone": "0309876543",
+    "functions": "CTO",
+    "address": {
+      "street": "456 Hauptstraße",
+      "city": "Munich",
+      "zipCode": "80331",
+      "country": "Germany"
+    }
+  },
+  {
+    "idclient": "c8b4399a-fb63-466e-a933-53e4f6a86651",
+    "firstName": "Thomas",
+    "lastName": "Müller",
+    "companyName": "EcoFuture",
+    "addDate": 1718739429150,
+    "email": "t.mueller@ecofuture.com",
+    "phone": "0170987654",
+    "functions": "CMO",
+    "address": {
+      "street": "789 Bahnhofstraße",
+      "city": "Frankfurt",
+      "zipCode": "60311",
+      "country": "Germany"
+    }
+  },
+  {
+    "idclient": "3e300cdc-3add-4d9c-8093-77ab6b5fae0e",
+    "firstName": "Marie",
+    "lastName": "Lefevre",
+    "companyName": "BioPharma",
+    "addDate": 1718739429151,
+    "email": "m.lefevre@biopharma.com",
+    "phone": "0156789102",
+    "functions": "COO",
+    "address": {
+      "street": "321 Rue Saint-Honoré",
+      "city": "Lyon",
+      "zipCode": "69001",
+      "country": "France"
+    }
+  },
+  {
+    "idclient": "55ecd3dc-3ce2-4165-979d-a7d0c45b39ba",
+    "firstName": "Paul",
+    "lastName": "Moreau",
+    "companyName": "TechWorld",
+    "addDate": 1718739429152,
+    "email": "p.moreau@techworld.com",
+    "phone": "0167890123",
+    "functions": "CFO",
+    "address": {
+      "street": "654 Avenue de la République",
+      "city": "Marseille",
+      "zipCode": "13001",
+      "country": "France"
+    }
+  },
+  {
+    "idclient": "52a63192-30be-45bb-9802-3a0fdc1e8c33",
+    "firstName": "Claire",
+    "lastName": "Martin",
+    "companyName": "AutoTech",
+    "addDate": 1718739429154,
+    "email": "c.martin@autotech.com",
+    "phone": "0178901234",
+    "functions": "CPO",
+    "address": {
+      "street": "987 Rue des Boulets",
+      "city": "Toulouse",
+      "zipCode": "31000",
+      "country": "France"
+    }
+  },
+  {
+    "idclient": "3a2386dd-1613-4e4b-9bec-adc8eb42e69b",
+    "firstName": "David",
+    "lastName": "Klein",
+    "companyName": "NanoCorp",
+    "addDate": 1718739429155,
+    "email": "d.klein@nanocorp.com",
+    "phone": "0182345678",
+    "functions": "COO",
+    "address": {
+      "street": "123 Wilhelmstraße",
+      "city": "Berlin",
+      "zipCode": "10115",
+      "country": "Germany"
+    }
+  },
+  {
+    "idclient": "d4ec7eb2-a09f-439d-9dd7-95af94dd3e5a",
+    "firstName": "Emma",
+    "lastName": "Lambert",
+    "companyName": "EcoSolutions",
+    "addDate": 1718739429156,
+    "email": "e.lambert@ecosolutions.com",
+    "phone": "0145678912",
+    "functions": "CFO",
+    "address": {
+      "street": "456 Ruede Rivoli",
+      "city": "Paris",
+      "zipCode": "75001",
+      "country": "France"
+    }
+  }
+]

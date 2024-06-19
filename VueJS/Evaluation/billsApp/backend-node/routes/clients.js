@@ -3,7 +3,7 @@
 //framework backend
 const express = require("express");
 const router = express.Router();
-const ctrl = require("../controllers/bills.js");
+const ctrl = require("../controllers/clients.js");
 
 //déclaration des routes pour les factures soit /bills
 //toute les bills ici

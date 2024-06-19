@@ -34,6 +34,27 @@ const router = createRouter({
       path: '/create-bill/',
       name: 'create-bill',
       component: () => import('../views/CreateBillView.vue')
+    },
+    {
+      path: '/clients/',
+      name: 'clients',
+      component: () => import('../views/ClientsView.vue')
+    },
+    {
+      path: '/edit-client',
+      redirect: '/create-client'
+    },
+    // ici on déclare une route dynamique avec un paramètre :id
+    {
+      path: '/edit-client/:id',
+      props: true, //sert à récupérer les paramètres sous la forme de props dans le composant de la vue
+      name: 'edit-client',
+      component: () => import('../views/EditClientView.vue')
+    },
+    {
+      path: '/create-client/',
+      name: 'create-client',
+      component: () => import('../views/CreateClientView.vue')
     }
   ]
 })

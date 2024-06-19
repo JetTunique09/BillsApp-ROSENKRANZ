@@ -3,7 +3,7 @@
   <!-- tr pour tableau row donc 1 ligne  -->
   <tr>
     <!-- sur cette ligne cette tr on aura plusieurs infos, respectivement dans l'ordre des en tete crée  -->
-    <td class="align-middle">{{ bill.date }}</td>
+    <td class="align-middle"><i class="fa-regular fa-file me-2"></i>{{ bill.date }}</td>
     <td class="align-middle">{{ bill.description }}</td>
     <td class="align-middle">{{ clientName }}</td>
     <td class="align-middle text-end">{{ bill.totalHT.toFixed(2) }} HT</td>

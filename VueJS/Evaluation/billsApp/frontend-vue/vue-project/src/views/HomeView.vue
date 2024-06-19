@@ -1,8 +1,6 @@
 <template>
   <main>
     <h1>Home</h1>
-    <p>{{ toto }}</p>
-    <p>{{ count }}</p>
     <p>
       <button class="btn btn-primary" @click="increment">+1</button>
     </p>

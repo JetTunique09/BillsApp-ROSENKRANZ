@@ -1,14 +1,10 @@
 <template>
   <div>
-    <div class="row border-bottom pb-3 mb-3">
+    <div class="row border-bottom pb-3 mb-3 mt-4">
       <div class="col">
         <h1 class="h3">Créer une nouvelle facture</h1>
       </div>
       <div class="col text-end">
-        <button @click="createBill" class="btn btn-outline-primary">
-          <i class="fa-solid fa-plus-circle me-2"></i>
-          Ajouter une facture
-        </button>
         <button @click="goBack()" class="btn btn-outline-secondary ms-2">
           <i class="fa-solid fa-chevron-left me-2" />Retour
         </button>
@@ -29,13 +25,7 @@
             <label class="form-label">Facture N°</label>
           </div>
           <div class="form-floating mb-3">
-            <input
-              type="date"
-              v-model="bill.date"
-              class="form-control"
-              placeholder="Date"
-              :class="{ 'is-invalid': !bill.date }"
-            />
+            <input type="date" v-model="bill.date" class="form-control" placeholder="Date" />
             <label class="form-label">Émise le</label>
           </div>
           <div class="form-floating mb-3">
@@ -246,9 +236,9 @@
           Enregistrer
         </button>
       </p>
-      <pre>{{ bill }}</pre>
     </div>
   </div>
+  <pre> {{ bill.id }}</pre>
 </template>
 
 <script>
@@ -271,15 +261,16 @@ export default {
     return {
       clients,
       bill: {
+        id: -1,
         billnum: '',
         description: '',
         date: '',
-        client: {},
+        client: '',
         prestations: [
           {
-            description: '',
+            description: 'Diagnostic',
             qty: 1,
-            price: 0.0
+            price: 20.0
           }
         ],
         discount: 0,
@@ -287,7 +278,8 @@ export default {
         totalHT: 0,
         tva: 20,
         totalTTC: 0
-      }
+      },
+      formSubmitted: false
     }
   },
   computed: {
@@ -295,11 +287,10 @@ export default {
       return (
         !this.bill ||
         !this.bill.billnum ||
-        !this.bill.date ||
         !this.bill.client ||
-        !this.bill.description
-        // !this.bill.prestations.length ||
-        // this.bill.prestations.some((p) => !p.description || p.price <= 0 || p.qty <= 0)
+        !this.bill.description ||
+        !this.bill.prestations.length ||
+        this.bill.prestations.some((p) => !p.description || p.price <= 0 || p.qty <= 0)
       )
     },
     totalRow() {
@@ -312,30 +303,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions(useBillStore, ['onAddBill', 'onUpdateBill']),
-    createBill() {
-      console.log('Créer une facture depuis create vue')
-      // Trouver l'identifiant le plus élevé parmi les factures existantes
-      // this.bill = {
-      //   id: -1,
-      //   billnum: '',
-      //   description: '',
-      //   date: '',
-      //   client: {},
-      //   prestations: [
-      //     {
-      //       description: 'Etude graphique UX',
-      //       qty: 2,
-      //       price: 450.0
-      //     }
-      //   ],
-      //   discount: 0,
-      //   paid: 0,
-      //   totalHT: 0,
-      //   tva: 20,
-      //   totalTTC: 0
-      // }
-    },
+    ...mapActions(useBillStore, ['onUpdateBill', 'onAddBill']),
     onAddPrestation(index) {
       // ajout d'une prestation sous l'élément courant dans le tableau
       this.bill.prestations.splice(index, 0, { ...prestationInterface })
@@ -358,9 +326,15 @@ export default {
       }
     },
     submitForm() {
-      this.onAddBill(this.bill)
-      console.log('je suis dans le submitForm de createBill.vue')
-      this.$router.push({ path: '/bills' })
+      this.formSubmitted = true
+      if (!this.formInvalid) {
+        if (!this.bill.date) {
+          this.bill.date = new Date().toISOString().substr(0, 10)
+        }
+        this.onAddBill(this.bill)
+        console.log('fail to submit form')
+        this.$router.push({ path: '/bills' })
+      }
     },
     goBack() {
       this.$router.push({ path: '/bills' })

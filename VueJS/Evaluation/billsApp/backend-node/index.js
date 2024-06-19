@@ -3,6 +3,7 @@ const cors = require("cors");
 
 // import des routes qui viennent du dossier /routes/...
 const billRoutes = require("./routes/bills.js");
+const clientRoutes = require("./routes/clients.js");
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use(
 
 // utilisation des routes dans l'application
 app.use("/bills", billRoutes);
+app.use("/clients", clientRoutes);
 
 // route de base de l'api
 app.get("/", (req, res) => {
@@ -34,7 +36,7 @@ app.listen(port, () => {
 // run with `node server.mjs`
 //se mettre dans le terminal pour démarrer le serveur -> node backend-node/index.mjs
 // utilisation https://expressjs.com/fr/starter/installing.html pour installer Express.js
-//ce que j'ai fais ici
+//détail de l'installation
 // noemierosenkranz@MacBook-Pro-de-Nemie exercice-ajout-back % npm init
 // This utility will walk you through creating a package.json file.
 // It only covers the most common items, and tries to guess sensible defaults.
