@@ -53,6 +53,9 @@
             :class="{ 'is-invalid': !client.email }"
           />
           <label for="email" class="form-label">Email</label>
+          <button @click="copyEmail" class="btn btn-outline-secondary copy-btn" type="button">
+            <i class="fa-regular fa-copy"></i>
+          </button>
         </div>
         <div class="form-floating mb-3">
           <input
@@ -136,6 +139,9 @@
             :class="{ 'is-invalid': !client.phone }"
           />
           <label for="phone" class="form-label">Téléphone</label>
+          <button @click="copyNum" class="btn btn-outline-secondary copy-btn" type="button">
+            <i class="fa-regular fa-copy"></i>
+          </button>
         </div>
       </div>
       <div class="col-md-4">
@@ -168,7 +174,6 @@
 </template>
 
 <script>
-// import PrestationTableRow from '@/components/TableList/PrestationTableRow.vue'
 import { clients } from '@/seeds/clients.js'
 // on importe le store
 import { useClientStore } from '@/stores/clients.js'
@@ -176,9 +181,7 @@ import { useClientStore } from '@/stores/clients.js'
 import { mapActions, mapWritableState } from 'pinia'
 
 export default {
-  components: {
-    // PrestationTableRow,
-  },
+  components: {},
   props: {
     id: {
       type: [String, Number],
@@ -221,9 +224,25 @@ export default {
     },
     goBack() {
       this.$router.push({ path: '/clients' })
+    },
+    //tuto pour la method copy
+    //https://youtu.be/PKnr2uNAlMk?feature=shared
+    copyEmail() {
+      navigator.clipboard.writeText(this.client.email)
+    },
+    copyNum() {
+      navigator.clipboard.writeText(this.client.phone)
     }
   }
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.copy-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  z-index: 2;
+}
+</style>
