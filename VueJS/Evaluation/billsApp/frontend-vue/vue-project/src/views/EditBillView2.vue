@@ -395,7 +395,7 @@ export default {
     }
   },
   created() {
-    this.getAllClients() // Appel à l'action pour récupérer la liste des clients
+    this.getAllClients() // recupère la liste des clients
   }
 }
 </script>
