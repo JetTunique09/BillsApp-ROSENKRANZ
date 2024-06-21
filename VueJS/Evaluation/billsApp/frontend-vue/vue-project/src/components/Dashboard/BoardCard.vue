@@ -11,6 +11,9 @@
       <p>le</p>
       <p>gros</p>
       <p>donut</p>
+      <div class="sommeBills d-flex justify-content-end">
+        <span>{{ somBills }} €</span>
+      </div>
     </div>
     <div class="card-footer">
       <h6>
@@ -39,7 +42,35 @@ export default {
     }
   },
   computed: {
-    ...mapState(useBillStore, ['bills'])
+    ...mapState(useBillStore, ['bills']),
+    //https://laracasts.com/discuss/channels/vue/sum-number-in-vuejs
+    somBills() {
+      if (this.nbBills === 0) {
+        return 0
+      } else {
+        const somBills = this.bills.reduce((acc, bill) => {
+          return acc + bill.totalTTC
+        }, 0)
+        return somBills.toFixed(2)
+      }
+    },
+    //  calcul du pourcentage de factures payées (pBills) et impayées (imBills)
+    // filtre les bills avec statut true et recup combien
+    // calcul en pourcentage et retour avec 1 chiffre après la virgule
+    prPaye() {
+      const totalBills = this.nbBills
+      if (totalBills === 0) return 0
+      const pBills = this.bills.filter((bill) => bill.statut === true).length
+      // console.log(pBills, 'bill payées')
+      return ((pBills / totalBills) * 100).toFixed(1)
+    },
+    prImpaye() {
+      const totalBills = this.nbBills
+      if (totalBills === 0) return 0
+      const imBills = this.bills.filter((bill) => bill.statut === false).length
+      // console.log(imBills, 'bill Impayées')
+      return ((imBills / totalBills) * 100).toFixed(1)
+    }
   },
   async mounted() {
     //récupère les données de l'API
@@ -47,6 +78,7 @@ export default {
   },
   methods: {
     ...mapActions(useBillStore, ['getAllBills']),
+    // recupere le nombre de facture
     getNbBills() {
       this.nbBills = this.bills.length
     }
@@ -65,7 +97,6 @@ export default {
 
 .card {
   font-family: 'Roboto', sans-serif;
-  background-color: bisque;
   width: 300px;
 }
 /* HEADER DE LA CARD */
@@ -79,6 +110,13 @@ export default {
 }
 .title {
   font-size: 20px;
+}
+
+/* BODY DE LA CARD */
+.sommeBills {
+  font-weight: bold;
+  font-size: larger;
+  color: rgb(9, 9, 92);
 }
 
 /* FOOTER DE LA CARD */

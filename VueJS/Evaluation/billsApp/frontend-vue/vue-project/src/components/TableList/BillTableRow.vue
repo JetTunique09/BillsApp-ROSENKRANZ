@@ -6,15 +6,23 @@
     <td class="align-middle"><i class="fa-regular fa-file me-2"></i>{{ bill.date }}</td>
     <td class="align-middle">{{ bill.description }}</td>
     <td class="align-middle">{{ clientName }}</td>
-    <td class="align-middle text-end">{{ bill.totalHT.toFixed(2) }} HT</td>
     <td class="align-middle text-end">{{ bill.totalTTC.toFixed(2) }} TTC</td>
+    <td class="align-middle text-end">
+      <i
+        :class="
+          bill.statut
+            ? 'fa-solid fa-circle-check text-success'
+            : 'fa-regular fa-hourglass-half text-warning'
+        "
+      ></i>
+    </td>
     <td class="align-middle d-flex gap-2 justify-content-end align-items-center">
       <!-- on a un bouton permettant la modification et la suppression de chaque bill -->
       <button @click="$emit('delete', bill)" class="btn btn-outline-danger">
-        <i class="fa-solid fa-trash me-2"></i>Supprimer
+        <i class="fa-solid fa-trash"></i>
       </button>
       <button @click="$emit('edit', bill)" class="btn btn-outline-info">
-        <i class="fa-solid fa-pen me-2"></i>Editer
+        <i class="fa-solid fa-pen"></i>
       </button>
     </td>
   </tr>
@@ -42,4 +50,8 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.fa-hourglass-half {
+  color: #fd7e14;
+}
+</style>

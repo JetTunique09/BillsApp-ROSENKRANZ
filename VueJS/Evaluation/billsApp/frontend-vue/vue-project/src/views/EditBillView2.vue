@@ -61,7 +61,7 @@
           <label for="client" class="form-label">Client</label>
         </div>
       </div>
-      <div class="col-md-8">
+      <div class="col-md-4">
         <div class="form-floating mb-3">
           <input
             type="text"
@@ -75,6 +75,25 @@
           <label for="description" class="form-label">Description</label>
         </div>
       </div>
+      <div class="col-md-4">
+        <div class="row ms-5 mb-3 mt-3">
+          <div class="col-auto">
+            <span v-if="!bill.statut" class="me-2">Impayée</span>
+            <span v-else class="me-2">Payée</span>
+          </div>
+          <div class="col-auto form-check form-switch">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="statut"
+              v-model="bill.statut"
+              @change="toggleStatut"
+              :class="{ 'btn-true': bill.statut }"
+            />
+          </div>
+        </div>
+      </div>
+      <!-- <pre>{{ bill.statut }}</pre> -->
     </div>
     <TableList>
       <template #thead>
@@ -413,5 +432,16 @@ export default {
 .table .th-montant-ht,
 .table .th-montant-total {
   width: 18%;
+}
+
+/* STYLE POUR TOOGLE BUTTON STATUT */
+.form-check-input {
+  height: 20px;
+  width: 40px;
+}
+.btn-true {
+  color: #fff;
+  background-color: #28a745;
+  border-color: #28a745;
 }
 </style>

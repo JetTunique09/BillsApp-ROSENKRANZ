@@ -8,8 +8,8 @@
           <th>Date</th>
           <th>Description</th>
           <th>Client</th>
-          <th class="text-end">Prix HT</th>
           <th class="text-end">Prix TTC</th>
+          <th class="text-end">Statut</th>
           <th class="text-end">Actions</th>
         </slot>
       </tr>
