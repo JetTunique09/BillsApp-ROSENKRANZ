@@ -202,6 +202,7 @@
                 type="number"
                 min="0"
                 step="1"
+                disabled
                 v-model="bill.totalHT"
                 class="form-control"
                 placeholder="global-total-ht"
@@ -218,6 +219,7 @@
                 type="number"
                 min="0"
                 step="1"
+                disabled
                 v-model="bill.tva"
                 class="form-control"
                 placeholder="tva"
@@ -234,6 +236,7 @@
                 type="number"
                 min="0"
                 step="1"
+                disabled
                 v-model="bill.totalTTC"
                 class="form-control"
                 placeholder="grand-total-ttc"
@@ -267,12 +270,6 @@ import { useClientStore } from '@/stores/clients.js'
 import TableList from '@/components/TableList/TableList.vue'
 import { mapActions, mapState } from 'pinia'
 
-const prestationInterface = {
-  description: '',
-  price: 0,
-  qty: 1
-}
-
 export default {
   components: {
     TableList
@@ -287,9 +284,9 @@ export default {
         client: '',
         prestations: [
           {
-            description: 'Diagnostic',
+            description: '',
             qty: 1,
-            price: 20.0
+            price: 0
           }
         ],
         discount: 0,
@@ -327,7 +324,7 @@ export default {
     ...mapActions(useClientStore, ['getAllClients']),
     onAddPrestation(index) {
       // ajout d'une prestation sous l'élément courant dans le tableau
-      this.bill.prestations.splice(index, 0, { ...prestationInterface })
+      this.bill.prestations.splice(index, 0, {})
     },
     onRemovePrestation(index) {
       // suppression d'une prestation

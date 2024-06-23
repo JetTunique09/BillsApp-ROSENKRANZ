@@ -6,12 +6,9 @@
         <span class="title">Factures en 2023</span>
       </h4>
     </div>
-    <div class="card-body">
-      <p>ici</p>
-      <p>le</p>
-      <p>gros</p>
-      <p>donut</p>
-      <div class="sommeBills d-flex justify-content-end">
+    <div class="card-body pt-0">
+      <DonutTest />
+      <div class="sommeBills d-flex justify-content-end mt-2">
         <span>{{ somBills }} €</span>
       </div>
     </div>
@@ -21,7 +18,7 @@
         <span>Total Encaissée - </span>
         <span>{{ prPaye }} %</span>
       </h6>
-      <h6>
+      <h6 class="mt-2">
         <span class="circle-impaye me-2"></span>
         <span>Total Impayée - </span>
         <span>{{ prImpaye }} %</span>
@@ -33,8 +30,12 @@
 <script>
 import { useBillStore } from '@/stores/bill.js'
 import { mapActions, mapState } from 'pinia'
+import DonutTest from '@/components/Dashboard/DonutTest.vue'
 
 export default {
+  components: {
+    DonutTest
+  },
   data() {
     return {
       // nombre de factures initale à 0

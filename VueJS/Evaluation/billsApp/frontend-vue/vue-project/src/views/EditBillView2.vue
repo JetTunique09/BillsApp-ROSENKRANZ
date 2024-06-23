@@ -3,7 +3,9 @@
     <!-- titre et bouton ajouter -->
     <div class="row border-bottom pb-3 mb-3 mt-4">
       <div class="col">
-        <h1 class="h3"><i class="fa-solid fa-angle-down me-2" />Editer une facture</h1>
+        <h1 class="h3">
+          <i class="fa-solid fa-angle-down me-2" />Modifier la facture de {{ clientName }}
+        </h1>
       </div>
       <div class="col text-end">
         <button @click="deleteBill(bill)" class="btn btn-outline-danger">
@@ -26,6 +28,7 @@
             v-model="bill.billnum"
             class="form-control"
             placeholder="Facture N°"
+            disabled
             :class="{ 'is-invalid': !bill.billnum }"
           />
           <label for="billnum" class="form-label">Facture N°</label>
@@ -39,26 +42,22 @@
             placeholder="Date"
             format="yyyy-MM-dd"
             v-model="bill.date"
+            disabled
             :class="{ 'is-invalid': !bill.date }"
           />
           <label for="date" class="form-label">Émise le</label>
         </div>
         <div class="form-floating mb-3">
-          <select
+          <input
             type="text"
-            name="client"
-            id="client"
+            name="clientName"
+            id="clientName"
             class="form-control"
-            placeholder="Client"
-            v-model="bill.client"
-            :class="{ 'is-invalid': !bill.client }"
-          >
-            <option value="">Veuillez choisir un client</option>
-            <option v-for="client in clients" :value="client" :key="client.idclient">
-              {{ client.firstName }} {{ client.lastName }}
-            </option>
-          </select>
-          <label for="client" class="form-label">Client</label>
+            placeholder="Nom du client"
+            :value="clientName"
+            disabled
+          />
+          <label for="clientName" class="form-label">Nom du client</label>
         </div>
       </div>
       <div class="col-md-4">
@@ -295,7 +294,6 @@
         <i class="fa-solid fa-save me-2" />Enregistrer
       </button>
     </p>
-    <!-- 1ère manière de récupérer des paramètres de la route : -->
     <!-- <pre>{{ bill }}</pre> -->
   </div>
 </template>
@@ -348,6 +346,9 @@ export default {
           return prestation.qty * prestation.price
         }
       }
+    },
+    clientName() {
+      return this.bill.client.firstName + ' ' + this.bill.client.lastName
     }
   },
   mounted() {
