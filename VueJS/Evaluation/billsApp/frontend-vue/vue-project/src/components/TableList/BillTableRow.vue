@@ -7,7 +7,7 @@
     <td class="align-middle">{{ bill.description }}</td>
     <td class="align-middle">{{ clientName }}</td>
     <td class="align-middle text-end">{{ bill.totalTTC.toFixed(2) }} TTC</td>
-    <td class="align-middle text-end">
+    <td v-if="showStatus" class="align-middle text-end">
       <i
         :class="
           bill.statut
@@ -36,6 +36,10 @@ export default {
     bill: {
       type: Object,
       required: true
+    },
+    showStatus: {
+      type: Boolean,
+      default: true
     }
   },
   emits: ['delete', 'edit'],
