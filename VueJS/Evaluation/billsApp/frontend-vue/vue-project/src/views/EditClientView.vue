@@ -69,7 +69,8 @@
           />
           <label for="companyName" class="form-label">Entreprise</label>
         </div>
-        <h3>Ou ?</h3>
+        <br />
+        <h3>Coordonnées :</h3>
         <div class="form-floating mb-3">
           <input
             type="text"
