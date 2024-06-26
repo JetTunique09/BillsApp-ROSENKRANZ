@@ -1,4 +1,4 @@
-package edu.fbansept.cda24.security;
+package com.example.demo.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -32,6 +32,7 @@ public class SecurityConfig {
     @Autowired
     JwtFilter jwtFilter;
 
+    // se connecter
     @Bean
     public AuthenticationProvider authenticationProvider () {
         DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
@@ -40,6 +41,7 @@ public class SecurityConfig {
         return daoAuthenticationProvider;
     }
 
+    // systeme autorisation
     @Bean
     public SecurityFilterChain httpSecurity (HttpSecurity http) throws Exception {
 

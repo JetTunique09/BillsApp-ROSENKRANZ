@@ -1,4 +1,4 @@
-package edu.fbansept.cda24.security;
+package com.example.demo.security;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

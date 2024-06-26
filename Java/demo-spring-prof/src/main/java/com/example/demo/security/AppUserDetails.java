@@ -1,6 +1,6 @@
-package edu.fbansept.cda24.security;
+package com.example.demo.security;
 
-import edu.fbansept.cda24.model.Utilisateur;
+import com.example.demo.model.Utilisateur;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -35,7 +35,7 @@ public class AppUserDetails implements UserDetails {
 
     @Override
     public String getPassword() {
-        return utilisateur.getMotDePasse();
+        return utilisateur.getPassword();
     }
 
     @Override

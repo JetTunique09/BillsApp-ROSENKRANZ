@@ -1,7 +1,7 @@
-package edu.fbansept.cda24.security;
+package com.example.demo.security;
 
-import edu.fbansept.cda24.dao.UtilisateurDao;
-import edu.fbansept.cda24.model.Utilisateur;
+import com.example.demo.dao.UtilisateurDao;
+import com.example.demo.model.Utilisateur;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

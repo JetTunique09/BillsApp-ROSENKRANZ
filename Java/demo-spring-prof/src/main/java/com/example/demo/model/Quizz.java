@@ -11,6 +11,8 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
 
+import java.util.List;
+
 @Getter
 @Setter
 @Entity
@@ -19,21 +21,27 @@ import org.hibernate.validator.constraints.Length;
 public class Quizz {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(unique = true, nullable = false)
     protected Integer id;
 
     @NotBlank
     @NotNull
     @Length(min = 3, max = 50)
-    @Column(length = 50)
+    @Column( length = 50)
     protected String nom;
 
     @Min(1)
-    @Max(5)
+    @Max(50)
     protected int niveau;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
     protected Utilisateur createur;
 
-//    @OneToOne(optional = false)
-//    protected Utilisateur dernierJoueur;
+    @ManyToMany
+    @JoinTable(name = "categorie_quizz",
+            joinColumns = @JoinColumn(name = "quizz_id"),
+            inverseJoinColumns = @JoinColumn(name = "categorie_id"))
+    protected List<Categorie> listeCategorie;
+
 }
+
