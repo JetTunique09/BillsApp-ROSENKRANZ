@@ -21,7 +21,7 @@ public class ReponsePossible {
     protected String texte;
 
     @Column
-    protected Boolean reponse;
+    protected Boolean juste;
 
     //associer a une question
     @ManyToOne(optional = false)

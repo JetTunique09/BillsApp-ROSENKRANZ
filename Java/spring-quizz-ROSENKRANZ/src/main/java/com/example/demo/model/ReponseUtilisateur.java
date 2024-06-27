@@ -17,16 +17,10 @@ public class ReponseUtilisateur {
     @Column(unique = true, nullable = false)
     protected Integer id;
 
-    @Column(columnDefinition = "TEXT")
-    protected String texte;
-
-    @Column
-    protected Boolean reponse;
-
     //associer a une reponse possible
     @ManyToOne(optional = false)
     protected ReponsePossible reponsePossible;
 
-//    @ManyToOne(optional = false)
-//    protected Utilisateur repondeur;
+    @ManyToOne(optional = false)
+    protected Utilisateur repondeur;
 }
