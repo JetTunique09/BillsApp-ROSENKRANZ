@@ -32,9 +32,20 @@ INSERT INTO categorie_quizz (quizz_id, categorie_id) VALUES
 
 INSERT INTO question (texte, quizz_id)
 VALUES
-    ("comment vas filippo ?", 1),
+    ("citez un peintre de la renaissance ?", 1),
     ("qu'est ce qu'on mange ?", 1),
-    ("qu'est c ?", 2);
+    ("Noemie a t elle réussi l'exercice ?", 2);
+
+INSERT INTO reponse_possible (texte, reponse , question_id) VALUES
+("n'importe quel peintre..", NULL, 1),
+("un plat", NULL, 2),
+(NULL,1,3);
+
+INSERT INTO  reponse_utilisateur (texte, reponse, reponse_possible_id)
+VALUES
+    ("De vinci ! ", null, 1),
+    ("des lasagnes ! ", null, 2),
+    (null, 1, 3);
 
 -- INSERT INTO question_quizz (quizz_id, question_id)
 -- VALUES
@@ -43,14 +54,3 @@ VALUES
 --  (3, 5),
 --  (3, 3),
 --  (2, 1);
-
-
-INSERT INTO reponse_possible (texte, reponse , question_id) VALUES
-("Réponse 1", NULL, 1),
-("Réponse 2", NULL, 2),
-(NULL,0,3);
-
-
-
-
-

@@ -42,8 +42,8 @@ public class Utilisateur {
 //    @OneToMany(mappedBy = "reponse-p", fetch = FetchType.EAGER)
 //    protected List<ReponsePossible> reponsePossibles;
 
-    @OneToMany(mappedBy = "createur", fetch = FetchType.EAGER)
-    protected List<ReponseUtilisateur> reponseUtilisateur;
+//    @OneToMany(mappedBy = "repondeur", fetch = FetchType.EAGER)
+//    protected List<ReponseUtilisateur> reponseUtilisateur;
 
     protected  boolean administrateur;
 }

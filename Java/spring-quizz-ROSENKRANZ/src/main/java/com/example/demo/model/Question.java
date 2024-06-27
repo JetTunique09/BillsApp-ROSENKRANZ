@@ -7,16 +7,14 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.validator.constraints.Length;
-
-import java.util.List;
 
 @Getter
 @Setter
 @Entity
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 
-public class ReponseUtilisateur {
+public class Question {
+    //CAS DUN MANYTOMANY
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
@@ -24,10 +22,10 @@ public class ReponseUtilisateur {
 
     @NotBlank
     @NotNull
-    @Length(min = 3, max = 50)
-    @Column( length = 50)
-    protected String nom;
+    @Column(columnDefinition = "TEXT")
+    protected String texte;
 
     @ManyToOne(optional = false)
-    protected Utilisateur createur;
+    protected Quizz quizz;
+
 }
