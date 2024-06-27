@@ -1,5 +1,6 @@
 package com.example.demo.security;
 
+import com.example.demo.dao.QuestionDao;
 import com.example.demo.dao.UtilisateurDao;
 import com.example.demo.model.Utilisateur;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,10 @@ public class AppUserDetailsService implements UserDetailsService {
 
     @Autowired
     UtilisateurDao utilisateurDao;
+
+    @Autowired
+    QuestionDao questionDao;
+
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {

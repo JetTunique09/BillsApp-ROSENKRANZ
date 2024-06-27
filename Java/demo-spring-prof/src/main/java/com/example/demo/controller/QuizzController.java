@@ -2,10 +2,13 @@ package com.example.demo.controller;
 
 import com.example.demo.dao.QuizzDao;
 import com.example.demo.model.Quizz;
+import com.example.demo.security.AppUserDetails;
+import com.example.demo.security.IsAdmin;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -33,9 +36,14 @@ public class QuizzController {
         return new ResponseEntity<>(optionalQuizz.get(), HttpStatus.OK);
     }
 
+    @IsAdmin
     @PostMapping("")
-    public ResponseEntity<Quizz> add(@RequestBody @Valid Quizz quizz) {
+    public ResponseEntity<Quizz> add(@RequestBody @Valid Quizz quizz,
+             @AuthenticationPrincipal AppUserDetails userDetails) {
+
         quizz.setId(null);
+        quizz.setCreateur(userDetails.getUtilisateur());
+
         QuizzDao.save(quizz);
         return new ResponseEntity<>(quizz, HttpStatus.CREATED);
     }

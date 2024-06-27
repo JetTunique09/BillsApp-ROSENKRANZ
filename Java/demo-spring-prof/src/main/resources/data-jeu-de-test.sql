@@ -22,3 +22,35 @@ INSERT INTO categorie_quizz (quizz_id, categorie_id) VALUES
                                                          (2, 2),
                                                          (1, 2);
 
+-- INSERT INTO question (nom)
+-- VALUES
+-- ("JJJ?"),
+-- ("Culture geek ?"),
+-- ("Geographie ?"),
+-- ("Japon ?"),
+-- ("Serie ?");
+
+INSERT INTO question (texte, quizz_id)
+VALUES
+    ("comment vas filippo ?", 1),
+    ("qu'est ce qu'on mange ?", 1),
+    ("qu'est c ?", 2);
+
+-- INSERT INTO question_quizz (quizz_id, question_id)
+-- VALUES
+--  (1, 2),
+--  (2, 4),
+--  (3, 5),
+--  (3, 3),
+--  (2, 1);
+
+
+INSERT INTO reponse_possible (texte, reponse , question_id) VALUES
+("Réponse 1", NULL, 1),
+("Réponse 2", NULL, 2),
+(NULL,0,3);
+
+
+
+
+

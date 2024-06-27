@@ -36,8 +36,14 @@ public class Utilisateur {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     protected String password;
 
-    @OneToMany(mappedBy = "createur")
+    @OneToMany(mappedBy = "createur", fetch = FetchType.EAGER)
     protected List<Quizz> listeQuizz;
+
+//    @OneToMany(mappedBy = "reponse-p", fetch = FetchType.EAGER)
+//    protected List<ReponsePossible> reponsePossibles;
+
+    @OneToMany(mappedBy = "createur", fetch = FetchType.EAGER)
+    protected List<ReponseUtilisateur> reponseUtilisateur;
 
     protected  boolean administrateur;
 }
