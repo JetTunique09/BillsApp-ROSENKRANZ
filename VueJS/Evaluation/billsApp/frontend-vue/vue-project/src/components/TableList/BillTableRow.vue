@@ -4,10 +4,10 @@
   <tr>
     <!-- sur cette ligne cette tr on aura plusieurs infos, respectivement dans l'ordre des en tete crée  -->
     <td class="align-middle"><i class="fa-regular fa-file me-2"></i>{{ bill.date }}</td>
-    <td class="align-middle">{{ bill.description }}</td>
+    <td v-if="!isHomeView" class="align-middle">{{ bill.description }}</td>
     <td class="align-middle">{{ clientName }}</td>
     <td class="align-middle text-end">{{ bill.totalTTC.toFixed(2) }} TTC</td>
-    <td v-if="showStatus" class="align-middle text-end">
+    <td v-if="!isHomeView" class="align-middle text-end">
       <i
         :class="
           bill.statut
@@ -18,7 +18,7 @@
     </td>
     <td class="align-middle d-flex gap-2 justify-content-end align-items-center">
       <!-- on a un bouton permettant la modification et la suppression de chaque bill -->
-      <button @click="$emit('delete', bill)" class="btn btn-outline-danger">
+      <button v-if="!isHomeView" @click="$emit('delete', bill)" class="btn btn-outline-danger">
         <i class="fa-solid fa-trash"></i>
       </button>
       <button @click="$emit('edit', bill)" class="btn btn-outline-info">
@@ -48,9 +48,11 @@ export default {
   computed: {
     clientName() {
       return this.bill.client.firstName + ' ' + this.bill.client.lastName
+    },
+    isHomeView() {
+      return this.$route.name === 'home'
     }
-  },
-  methods: {}
+  }
 }
 </script>
 

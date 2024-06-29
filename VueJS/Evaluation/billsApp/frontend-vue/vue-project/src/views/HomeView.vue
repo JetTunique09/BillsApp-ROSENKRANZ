@@ -26,13 +26,13 @@
         <div class="col-5">
           <BoardCard> </BoardCard>
         </div>
-        <div class="col-7">
+        <div class="col-6 tableauList">
+          <h2 class="h3 mt-2 mb-4 mx-2">Factures en cours</h2>
           <TableList>
             <BillTableRow
-              v-for="bill in bills"
+              v-for="bill in enCoursBills"
               :key="bill.id"
               :bill="bill"
-              :showStatus="false"
               @edit="onEditBill($event)"
             />
           </TableList>
@@ -64,7 +64,10 @@ export default {
   //recupère en lecture la donnée et l'injecte dans le composant avec le même nom de la variable dans le store
   computed: {
     ...mapState(useCounterStore, ['count']),
-    ...mapState(useBillStore, ['bills'])
+    ...mapState(useBillStore, ['bills']),
+    enCoursBills() {
+      return this.bills.filter((bill) => !bill.statut)
+    }
   },
   methods: {
     ...mapActions(useCounterStore, ['increment']),
@@ -86,3 +89,15 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.tableauList {
+  border-radius: 10px;
+  border: 1px solid rgb(214, 214, 214);
+  padding: 10px;
+}
+
+.h3 {
+  font-family: Roboto;
+}
+</style>
