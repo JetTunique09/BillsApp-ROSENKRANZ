@@ -55,7 +55,7 @@ export default {
   },
   data() {
     return {
-      showBills: true // initial state of the bills list visibility
+      showBills: true
     }
   },
   computed: {
@@ -71,7 +71,6 @@ export default {
     ...mapActions(useBillStore, ['onDeleteBill', 'getAllBills']),
     onEditBill(bill) {
       console.log('edit bill with id: ', bill.id)
-      //this.setBill(bill.id); // Assurez-vous que la facture est définie dans le store
       //redirection de page
       this.$router.push({
         name: 'edit-bill',

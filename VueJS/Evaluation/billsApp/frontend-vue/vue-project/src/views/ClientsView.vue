@@ -49,7 +49,7 @@ export default {
   },
   data() {
     return {
-      showClients: true // initial state of the bills list visibility
+      showClients: true
     }
   },
   computed: {
